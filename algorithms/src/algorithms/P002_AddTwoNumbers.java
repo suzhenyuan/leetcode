@@ -50,9 +50,8 @@ public class P002_AddTwoNumbers {
 	 * @todo 看了提示信息，才想起，为什么不返回root.next呢？就不用去判断是否第一个节点了。
 	 */
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		ListNode root = null;
-		ListNode result = null;
-		int index = 0;
+		ListNode root = new ListNode(0);
+		ListNode result = root;
 		ListNode lr1 = l1;
 		ListNode lr2 = l2;
 		int ten=0;
@@ -61,14 +60,9 @@ public class P002_AddTwoNumbers {
 			ten = (lr1.val+lr2.val+ten)/10;
 			lr1 = lr1.next;
 			lr2 = lr2.next;
-			if(index == 0){
-				root = new ListNode(v);
-				result=root;
-			}else{
-				result.next = new ListNode(v);
-				result = result.next;
-			}
-			index ++;
+			result.next = new ListNode(v);
+			result = result.next;
+			
 		}
 		ListNode tail = null;
 		if(null == lr1){
@@ -90,7 +84,7 @@ public class P002_AddTwoNumbers {
 			result.next = new ListNode(ten);
 		}
 		
-		return root;
+		return root.next;
 	}
 
 }
