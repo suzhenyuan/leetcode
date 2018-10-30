@@ -19,19 +19,32 @@ public class ListNode {
 	}
 
 	public static ListNode createLists(int num) {
+		return createLists(num,false);
+	}
+	public static ListNode createLists(int num,boolean random) {
 		ListNode head = new ListNode(0);
 		ListNode next = head;
 		for (int i = 1; i <= num; i++) {
-			next.next = new ListNode(i);
+			int val = random?(int)(Math.random()*100):i;
+			next.next = new ListNode(val);
 			next = next.next;
 		}
-		ListNode.print(head.next);
+		ListNode.print("生成的链表",head.next);
 		return head.next;
 	}
-	public static void print(String text,ListNode head) {
+	public static ListNode getTail(ListNode head) {
+		ListNode tail = head;
+		while (null != tail && null != tail.next) {
+			tail = tail.next;
+		}
+		return tail;
+	}
+
+	public static void print(String text, ListNode head) {
 		System.out.print(text + ": ");
 		print(head);
 	}
+
 	public static void print(ListNode head) {
 		int total = 20;
 		ListNode next = head;
