@@ -8,6 +8,7 @@ public class P142LinkedListCycleII {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
+				//快慢指针在同一个位置,再设置一个指针，从起点开始，直到他们相遇，相遇的节点即为相交的节点
 				ListNode start = head;
 				while (start != slow) {
 					start = start.next;
